@@ -1,10 +1,10 @@
 # hello-world
 
-いろいろな言語で「Hello World」を書いてみよう
+いろいろな言語で **Hello World** を書いてみよう
 
 - Python
 - ShellScript
 - C言語
 - ...
 
-どんどんプルリク送ってください！
+*どんどんプルリク送ってください！*
