@@ -1,6 +1,5 @@
 #!/bin/bash
 
-language="en"  # デフォルトは英語
 
 while getopts ":l:" opt; do
   case $opt in
@@ -18,33 +17,67 @@ while getopts ":l:" opt; do
         "ko")
           language="ko"
           ;;
+        "ru")
+          language="ru"
+          ;;
+        "tl")
+          language="tl"
+          ;;
+        "de")
+          language="de"
+          ;;
+        "ar")
+          language="ar"
+          ;;
+        "hi")
+          language="hi"
+          ;;
         *)
-          echo "Invalid language option: $OPTARG" >&2
+          echo "無効な言語オプション: $OPTARG" >&2
           exit 1
           ;;
       esac
       ;;
     \?)
-      echo "Invalid option: -$OPTARG" >&2
+      echo "無効なオプション: -$OPTARG" >&2
       exit 1
       ;;
     :)
-      echo "Option -$OPTARG requires an argument." >&2
-      exit 1
+      language="en"  # デフォルトは英語
       ;;
   esac
 done
 
-if [ "$language" == "en" ]; then
-  echo "Hello World!"
-elif [ "$language" == "ja" ]; then
-  echo "こんにちは、世界！"
-elif [ "$language" == "zh" ]; then
-  echo "你好，世界！"
-elif [ "$language" == "ko" ]; then
-  echo "안녕하세요, 세계!"
-else
-  echo "Unsupported language: $language" >&2
-  exit 1
-fi
-
+case $language in
+  "en")
+    echo "Hello World!"
+    ;;
+  "ja")
+    echo "こんにちは、世界！"
+    ;;
+  "zh")
+    echo "你好，世界！"
+    ;;
+  "ko")
+    echo "안녕하세요, 세계!"
+    ;;
+  "ru")
+    echo "Привет, мир!"
+    ;;
+  "tl")
+    echo "Kamusta, mundo!"
+    ;;
+  "de")
+    echo "Hallo Welt!"
+    ;;
+  "ar")
+    echo "!مرحبًا بالعالم"
+    ;;
+  "hi")
+    echo "नमस्ते दुनिया!"
+    ;;
+  *)
+    echo "サポートされていない言語: $language" >&2
+    exit 1
+    ;;
+esac
