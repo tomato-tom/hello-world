@@ -1,35 +1,37 @@
-// 参考 https://toshiocp.github.io/Gtk4-tutorial/sec4.html
-// GTK4で文字を表示するGUIアプリ
-// Ubuntu 22.04LTS
+// Ubuntu 24.04LTS
 // sudo apt install libgtk-4-dev
-
+// gcc $( pkg-config --cflags gtk4 ) -o hello_gtk hello_gtk.c $( pkg-config --libs gtk4 )
 
 #include <gtk/gtk.h>
 
-static void
-app_activate (GApplication *app) {
-  GtkWidget *win;
-  GtkWidget *lab;
+void activate(GtkApplication *app, gpointer user_data) {
+    GtkWidget *window;
+    GtkWidget *label;
 
-  win = gtk_application_window_new (GTK_APPLICATION (app));
-  gtk_window_set_title (GTK_WINDOW (win), "Hello GTK");
-  gtk_window_set_default_size (GTK_WINDOW (win), 450, 300);
+    // 新しいウィンドウを作成
+    window = gtk_application_window_new(app);
+    gtk_window_set_title(GTK_WINDOW(window), "Hello GTK+ 4");
+    gtk_window_set_default_size(GTK_WINDOW(window), 400, 300);
 
-  lab = gtk_label_new ("Hello World!");
-  gtk_window_set_child (GTK_WINDOW (win), lab);
+    // ラベルを作成し、ウィンドウに追加
+    label = gtk_label_new("Hello World!");
+    gtk_window_set_child(GTK_WINDOW(window), label);
 
-  gtk_window_present (GTK_WINDOW (win));
+    // ウィンドウを表示
+    gtk_widget_set_visible(window, TRUE);
 }
 
-int
-main (int argc, char **argv) {
-  GtkApplication *app;
-  int stat;
+int main(int argc, char *argv[]) {
+    GtkApplication *app;
+    GtkWidget *window;
+    GtkWidget *label;
 
-  app = gtk_application_new ("com.hello", G_APPLICATION_FLAGS_NONE);
-  g_signal_connect (app, "activate", G_CALLBACK (app_activate), NULL);
-  stat =g_application_run (G_APPLICATION (app), argc, argv);
-  g_object_unref (app);
-  return stat;
+    // GTKアプリケーションを初期化
+    app = gtk_application_new("com.hello", G_APPLICATION_DEFAULT_FLAGS);
+    
+    // アプリケーションの「activate」シグナルにコールバック関数を接続
+    g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
+
+    // アプリケーションを実行
+    return g_application_run(G_APPLICATION(app), argc, argv);
 }
-
