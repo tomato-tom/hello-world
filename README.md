@@ -7,3 +7,49 @@
 - C言語
 - ....
 
+
+## ブランチグラフ
+
+```mermaid
+---
+title: Hello Git Graph
+---
+gitGraph
+    commit id: "cd26e47: Initial commit"
+    commit id: "a807201: Update README.md"
+    commit id: "7142702: Merge pull request #1 from tomato-tom/dev"
+    commit id: "0f1e1fc: Create hello.py"
+    commit id: "20874db: Create hello.sh"
+    commit id: "696196a: Create hello.c"
+    commit id: "ba989ce: Create hello.html"
+    commit id: "ed95552: Create hello.js"
+    commit id: "816b2d3: Merge pull request #2 from tomato-tom/dev"
+    branch hello_
+    checkout hello_
+    commit id: "018c1fe: Update README.md" tag: "hello"
+    checkout main
+    commit id: "30273df: color追加"
+    commit id: "f11df66: README 編集"
+    commit id: "ec2580e: htmlのボタン"
+    commit id: "616ecc1: オプション追加、多言語"
+    commit id: "eb1a0ba: いくつかの言語追加"
+    commit id: "0b88f4c: GTK4でhello"
+    branch develop_
+    checkout develop_
+    commit id: "b97d9b9: Merge pull request #3 from tomato-tom/main"
+    checkout main
+    commit id: "fc9df60: サーバとソケット通信"
+    commit id: "42e67c9: タイピングみたいな出力"
+    commit id: "8749ae1: hello_typewriter.sh を更新"
+    commit id: "9d6483f: README.md を更新"
+    commit id: "a12f2d5: README.md を更新"
+    commit id: "a1c044a: Create hello.php"
+    commit id: "2ee40b5: modified: hello_gtk.c"
+    branch v1_0_0_
+    checkout v1_0_0_
+    commit id: "bdb5fea: Merge branch 'main' of github.com:tomato-tom/hello-world" tag: "v1.0.0"
+    branch feature-hello
+    checkout feature-hello
+    commit id: "8411904: maintenace hello.html" tag: "v1.0.1"
+```
+
